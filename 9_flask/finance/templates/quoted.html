@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quoted
+{% endblock %}
+
+{% block main %}
+
+    <!-- Tabela para exibir a cotação -->
+     <div class="container d-flex justify-content-center">
+         <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Symbol</th>
+                    <th>Price</th>
+                </tr>
+                <tbody>
+                        <tr>
+                            <td>{{ quote.name }}</td>
+                            <td>{{ quote.symbol }}</td>
+                            <td>{{ quote.price }}</td>
+                        </tr>
+                </tbody>
+            </thead>
+         </table>
+     </div>
+
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Index
+{% endblock %}
+
+{% block main %}
+
+<div class="container d-flex justify-content-center">
+    <table>
+        <thead>
+            <tr>
+                <th colspan="5">STOCK PORTFOLIO</th>
+            </tr>
+            <tr>
+                <th> </th>
+                <th>Symbol</th>
+                <th>Shares</th>
+                <th>Current price</th>
+                <th>TOTAL</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for stock in stocks %}
+            <tr>
+                <td></td>
+                <td>{{ stock.symbol }}</td>
+                <td>{{ stock.total_shares }}</td>
+                <td>{{ stock.price | usd }}</td>
+                <td>{{ stock.total | usd }}</td>
+            </tr>
+            {% endfor %}
+
+            <tr>
+                <td><b>Current Cash</b></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>{{ cash }}</td>
+            </tr>
+            <tr>
+                <td><b>Total Assets</b></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><b>{{ total }}</b></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

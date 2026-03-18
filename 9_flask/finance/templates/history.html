@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block title %}
+History
+{% endblock %}
+
+{% block main %}
+
+    <div class="container d-flex justify-content-center">
+        <table>
+            <thead>
+                <tr>
+                    <th colspan="6">TRANSACTIONS HISTORY</th>
+                </tr>
+                <tr>
+                    <th>ID</th>
+                    <th>Symbol</th>
+                    <th>Shares</th>
+                    <th>Price</th>
+                    <th>Type</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for transaction in transactions %}
+
+                <tr>
+                    <td>{{ transaction.id }}</td>
+                    <td>{{ transaction.symbol }}</td>
+                    <td>{{ transaction.shares }}</td>
+                    <td>{{ usd(abs(transaction.price * transaction.shares)) }}</td>
+                    <!-- abs -> valor absoluto, sem o sinal-->
+                    <td>{{ action(transaction.shares) }}</td>
+                    <td>{{ transaction.timestamp }}</td>
+                </tr>
+
+                {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+
+{% endblock %}

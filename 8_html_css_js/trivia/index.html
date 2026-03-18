@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+        <script>
+            document.addEventListener('DOMContentLoaded', function (){
+
+                let answer1 = "Descartes";
+                let answer2 = "BRASÍLIA";
+
+                // Pega todos os elementos com a class = "option"
+                let buttons = document.querySelectorAll('.option');
+
+                // Para cada um:
+                buttons.forEach(button => {
+
+                    // Add o encento click -> "Quando forem clicados"
+                    button.addEventListener('click', () =>{
+
+                        // Reseta a cor dos botões antes de um novo clique.
+                        buttons.forEach(btn => {
+                            btn.classList.remove('correct', 'incorrect');
+                        })
+
+                        let par = document.getElementById("p1");
+
+                        // Reseta a cor do paragrafos antes de um novo clique
+                        // usando classList é necessário fazer isso
+                        par.classList.remove('parCorrect', 'parIncorrect');
+
+                        if(button.textContent == answer1){
+                            button.classList.add('correct');
+                            par.innerHTML = 'Correto!';
+                            par.classList.add('parCorrect');
+                        }else{
+                            button.classList.add('incorrect');
+                            par.innerHTML = 'Incorreto!';
+                            par.classList.add('parIncorrect');
+                        }
+                    })
+                })
+
+                let button = document.getElementById('btn');
+
+                button.addEventListener('click', () => {
+
+                    let par = document.getElementById('p2');
+                    let txt = document.getElementById('txt');
+                    let userAnswer = txt.value.toUpperCase().trim();
+
+                    if(userAnswer != answer2){
+                        txt.classList.add('incorrect');
+                        par.innerHTML = 'Incorreto!';
+                        par.classList.add('parIncorrect');
+                    }else{
+                        txt.classList.add('correct');
+                        par.innerHTML = 'Correto!';
+                        par.classList.add('parCorrect');
+                    }
+                })
+            })
+
+        </script>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <hr>
+                    <h3>De quem é a famosa frase “Penso, logo existo”?</h3>
+                    <p id="p1"></p>
+                    <button class="option">Platão</button>
+                    <button class="option">Descartes</button>
+                    <button class="option">Sócrates</button>
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+                <h3>Qual a capital do Brasil?</h3>
+                <p id="p2"></p>
+                <input type="text" id="txt">
+                <button id="btn">Verificar</button>
+            </div>
+        </div>
+    </body>
+</html>
