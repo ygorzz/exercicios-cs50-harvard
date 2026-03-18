@@ -1,0 +1,11 @@
+sort1 uses: Bubble sort
+
+How do you know?: The omega on the files sorted is smaller
+
+sort2 uses: Merge sort
+
+How do you know?: The Big O on the files randoms is smaller
+
+sort3 uses: selection sort
+
+How do you know?: It performs poorly on all three .txt files which contains larger datasets(50000) and it's faster while going through the smaller datasets(5000).
